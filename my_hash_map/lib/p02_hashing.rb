@@ -5,23 +5,24 @@ end
 class Array
   def hash
     hash_machine = {
-      1 => 12,
-      2 => 20,
-      3 => 25,
-      4 => 6,
+      1 => 125,
+      2 => 206,
+      3 => 256,
+      4 => 676,
 
     }
-
     counter = 10
     ("a".."z").each do |char|
       counter += 1
       hash_machine[char] = counter
     end
+
     id = ""
     self.each do |el|
+      counter += 1
       id += hash_machine[el].to_s
     end
-    id.to_i
+    id.to_i + counter
   end
 end
 
@@ -42,3 +43,6 @@ class Hash
     id
   end
 end
+
+p [].hash #== 0
+p [[]].hash #== 0
